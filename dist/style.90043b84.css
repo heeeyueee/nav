@@ -1,0 +1,171 @@
+/*css reset*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  input,
+  button {
+    font-family: inherit;
+  }
+  ol,
+  ul {
+    list-style: none;
+  }
+  img{
+      max-width: 100%;
+      max-height: 100%;
+  }
+  
+/*style*/
+body{
+    background-color: #eeeeee;
+}
+.globalHeader{
+    margin: 20px;
+}
+@media (min-width:500px) { 
+    .globalHeader{
+        margin: 60px 0 80px 0;
+    }
+   
+}
+.sreach{
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+
+}
+/* 媒体查询，宽度大于500px的设备 */
+@media (min-width:500px) { 
+    .sreach{
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    
+    }        
+}
+.sreach>input{
+    width: 100%;
+    margin-right: 10px;
+    height: 40px;
+    padding: 0 10px;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    font-size: 16px;
+    
+}
+.sreach>button{
+    white-space: nowrap;
+    padding: 0 28px;
+    border: none;
+    border-radius: 4px;
+    background: #1654da;
+    color: azure;
+    font-size: 16px;
+}
+.globalMain{
+    max-width: 900px;
+    margin-right: auto;
+    margin-left: auto;
+
+}
+.siteList{
+    margin: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+}
+@media (min-width:500px) { 
+    .siteList{
+       justify-content: start;
+        margin-left: 0;
+        margin-right: -25px;
+    
+    }    
+    .siteList>li{
+        margin-right: 25px;
+    
+    }    
+}
+
+.siteList .site{
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    width: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    margin-bottom: 10px;
+    position: relative;
+    cursor: pointer;
+    
+
+}
+.siteList .site>.logo{
+    width: 64px;
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 64px;
+    margin-top: 10px;
+   
+}
+.siteList .site>.link{
+    margin: 10px 0;
+    font-size: 10px;
+
+}
+.siteList .addButton{
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    width: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+
+}
+
+.siteList .addButton>.icon-wrapper{
+    width: 64px;
+    height: 64px;
+    margin-top: 10px;
+    
+}
+.siteList .addButton .icon{
+    width: 64px;
+    height: 64px;
+    
+    
+}
+.siteList .addButton .text{
+    margin: 10px 0;
+    font-size: 10px;
+}
+.siteList .site .remove{
+position: absolute;
+right: 8px;
+top: 5px;
+font-size: 12px;
+display: none;
+}
+.siteList .site:hover .remove{
+display: block;
+cursor: default;
+    }
+
+/*# sourceMappingURL=style.90043b84.css.map */
