@@ -132,8 +132,14 @@ var hashMap = xObject || [{
 
 var render = function render() {
   $siteList.find('li:not(.last)').remove();
+  var $li;
   hashMap.forEach(function (item, index) {
-    var $li = $("<li>\n            <div class=\"site\">\n                <div class=\"logo\">".concat(item.logo[0], "</div>\n                <div class=\"link\">").concat(simplifyUrl(item.url), "</div>\n                <div class=\"remove\">\n                <svg class=\"icon\">\n                        <use xlink:href=\"#icon-remove\"></use>\n                </svg>\n                </div>\n            </div>\n    </li>")).insertBefore($lastLi);
+    if (document.body.classList.contains('dark')) {
+      $li = $("<li>\n            <div class=\"site dark\">\n                <div class=\"logo\">".concat(item.logo[0], "</div>\n                <div class=\"link\">").concat(simplifyUrl(item.url), "</div>\n                <div class=\"remove\">\n                <svg class=\"icon\">\n                        <use xlink:href=\"#icon-darkR\"></use>\n                </svg>\n                </div>\n            </div>\n        </li>")).insertBefore($lastLi);
+    } else {
+      $li = $("<li>\n        <div class=\"site\">\n            <div class=\"logo\">".concat(item.logo[0], "</div>\n            <div class=\"link\">").concat(simplifyUrl(item.url), "</div>\n            <div class=\"remove\">\n            <svg class=\"icon\">\n                    <use xlink:href=\"#icon-remove\"></use>\n            </svg>\n            </div>\n        </div>\n    </li>")).insertBefore($lastLi);
+    }
+
     $li.on('click', function () {
       window.open(item.url);
     });
@@ -164,12 +170,6 @@ $('.addButton').on('click', function (e) {
   });
   render();
 });
-
-window.onbeforeunload = function () {
-  var string = JSON.stringify(hashMap);
-  localStorage.setItem('x', string);
-};
-
 $(document).on('keypress', function (e) {
   var key = e.key;
 
@@ -182,5 +182,55 @@ $(document).on('keypress', function (e) {
     }
   }
 });
+var addIcon = document.querySelector('.icon-wrapper use');
+var removeIcon = document.querySelectorAll('.remove use');
+var theme = document.getElementById('theme');
+theme.addEventListener('click', function () {
+  document.body.classList.toggle('dark');
+  $(".site").toggleClass('dark');
+  $(".sreach>button").toggleClass('dark');
+  $(".sreach>input").toggleClass('dark');
+  $(".addButton").toggleClass('dark');
+
+  if (document.body.classList.contains('dark')) {
+    theme.innerHTML = "<svg class=\"icon\" aria-hidden=\"true\">\n                    <use xlink:href=\"#icon-light\"></use>\n                </svg>";
+    addIcon.href.animVal = "#icon-darkA";
+    addIcon.href.baseVal = "#icon-darkA";
+    removeIcon.forEach(function (item) {
+      item.href.animVal = "#icon-darkR";
+      item.href.baseVal = "#icon-darkR";
+    });
+  } else {
+    theme.innerHTML = "<svg class=\"icon\" aria-hidden=\"true\">\n             <use xlink:href=\"#icon-dark\"></use>\n         </svg>";
+    addIcon.href.animVal = "#icon-add";
+    addIcon.href.baseVal = "#icon-add";
+    removeIcon.forEach(function (item) {
+      item.href.animVal = "#icon-remove";
+      item.href.baseVal = "#icon-remove";
+    });
+  }
+
+  localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+});
+
+if (localStorage.getItem('theme') === 'dark') {
+  document.body.classList.add('dark');
+  $(".site").addClass('dark');
+  $(".sreach>button").addClass('dark');
+  $(".sreach>input").addClass('dark');
+  $(".addButton").addClass('dark');
+  theme.innerHTML = "<svg class=\"icon\" aria-hidden=\"true\">\n                    <use xlink:href=\"#icon-light\"></use>\n                </svg>";
+  addIcon.href.animVal = "#icon-darkA";
+  addIcon.href.baseVal = "#icon-darkA";
+  removeIcon.forEach(function (item) {
+    item.href.animVal = "#icon-darkR";
+    item.href.baseVal = "#icon-darkR";
+  });
+}
+
+window.onbeforeunload = function () {
+  var string = JSON.stringify(hashMap);
+  localStorage.setItem('x', string);
+};
 },{}]},{},["epB2"], null)
-//# sourceMappingURL=main.71cf2d3a.js.map
+//# sourceMappingURL=main.8c306925.js.map

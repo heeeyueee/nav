@@ -206,7 +206,6 @@ $(document).on('DOMContentLoaded', function () {
         item.href.baseVal = "#icon-darkR";
       });
     } else {
-      // if it's dark -> go light
       themeStylesheet.href = 'style.css';
       theme.innerHTML = "<svg class=\"icon\" aria-hidden=\"true\">\n            <use xlink:href=\"#icon-dark\"></use>\n        </svg>";
       addIcon.href.animVal = "#icon-add";
@@ -226,4 +225,4 @@ window.onbeforeunload = function () {
   localStorage.setItem('x', string);
 };
 },{}]},{},["epB2"], null)
-//# sourceMappingURL=main.f5ffeacc.js.map
+//# sourceMappingURL=main.cac4bedf.js.map
