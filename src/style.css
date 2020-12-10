@@ -69,6 +69,7 @@ body.dark {
 }
 .sreach>input.dark{
     background-color: rgb(13, 17, 23);
+    color:white;
     
 }
 .sreach>button{
