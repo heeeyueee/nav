@@ -2,6 +2,8 @@ let $siteList = $(".siteList")
 let $lastLi = $('.last')
 let x = localStorage.getItem('x')
 let xObject = JSON.parse(x)
+localStorage.setItem('theme', 'dark.css');
+const themeStylesheet = document.getElementById('theme_css');
 const hashMap = xObject || [{
         logo: 'A',
         url: 'https://www.bilibili.com'
@@ -13,8 +15,10 @@ const hashMap = xObject || [{
 ]
 let render = () => {
     $siteList.find('li:not(.last)').remove()
+    let $li
     hashMap.forEach((item, index) => {
-        let $li = $(`<li>
+        if (themeStylesheet.href.includes('style')) {
+            $li = $(`<li>
             <div class="site">
                 <div class="logo">${item.logo[0]}</div>
                 <div class="link">${simplifyUrl(item.url)}</div>
@@ -24,7 +28,20 @@ let render = () => {
                 </svg>
                 </div>
             </div>
+        </li>`).insertBefore($lastLi)
+        } else {
+            $li = $(`<li>
+        <div class="site">
+            <div class="logo">${item.logo[0]}</div>
+            <div class="link">${simplifyUrl(item.url)}</div>
+            <div class="remove">
+            <svg class="icon">
+                    <use xlink:href="#icon-darkR"></use>
+            </svg>
+            </div>
+        </div>
     </li>`).insertBefore($lastLi)
+        }
         $li.on('click', () => {
             window.open(item.url)
         })
@@ -51,10 +68,6 @@ $('.addButton').on('click', function (e) {
     render()
 
 });
-window.onbeforeunload = () => {
-    const string = JSON.stringify(hashMap)
-    localStorage.setItem('x', string)
-}
 $(document).on('keypress', (e) => {
     const {
         key
@@ -67,3 +80,47 @@ $(document).on('keypress', (e) => {
         }
     }
 })
+$(document).on('DOMContentLoaded', () => {
+    const addIcon = document.querySelector('.icon-wrapper use');
+    const removeIcon = document.querySelectorAll('.remove use')
+    console.log(removeIcon);
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme) {
+        themeStylesheet.href = storedTheme;
+    }
+    const theme = document.getElementById('theme');
+    theme.addEventListener('click', () => {
+        if (themeStylesheet.href.includes('style')) {
+            themeStylesheet.href = 'dark.css';
+            theme.innerHTML = `<svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-light"></use>
+        </svg>`;
+            addIcon.href.animVal = "#icon-darkA"
+            addIcon.href.baseVal = "#icon-darkA"
+            removeIcon.forEach((item) => {
+                item.href.animVal = "#icon-darkR"
+                item.href.baseVal = "#icon-darkR"
+            })
+        } else {
+            // if it's dark -> go light
+            themeStylesheet.href = 'style.css';
+            theme.innerHTML = `<svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-dark"></use>
+        </svg>`;
+            addIcon.href.animVal = "#icon-add"
+            addIcon.href.baseVal = "#icon-add"
+            removeIcon.forEach((item) => {
+                item.href.animVal = "#icon-remove"
+                item.href.baseVal = "#icon-remove"
+            })
+
+        }
+        localStorage.setItem('theme', themeStylesheet.href)
+    })
+
+
+})
+window.onbeforeunload = () => {
+    const string = JSON.stringify(hashMap)
+    localStorage.setItem('x', string)
+}

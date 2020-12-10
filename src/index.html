@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>前端导航</title>
-    <link rel="stylesheet" href="style.css">
+    <link id="theme_css" rel="stylesheet" href="style.css"> 
+    <!-- <link rel="stylesheet" href="style.css"> -->
     <style type="text/css">
         .icon {
            width: 1em; height: 1em;
@@ -29,7 +30,7 @@
         <li class="last">
             <div class="addButton">
                 <div class="icon-wrapper">
-                    <svg class="icon">
+                    <svg class="icon" aria-hidden="true">
                         <use xlink:href="#icon-add"></use>
                     </svg>
                 </div>
@@ -38,10 +39,14 @@
             </div>
         </li>
     </ul>
-
+    <div id="theme">
+        <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-dark"></use>
+        </svg>
+    </div>
 </main>
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="//at.alicdn.com/t/font_2258597_olxeltts6m.js"> </script>
+<script src="//at.alicdn.com/t/font_2258597_94e1ujj3am.js"> </script>
 <script src="./main.js"></script>
 </body>
 

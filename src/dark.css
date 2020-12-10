@@ -27,7 +27,7 @@
   
 /*style*/
 body{
-    background-color: #eeeeee;
+    background-color: rgb(47, 49, 54);
 }
 .globalHeader{
     margin: 20px;
@@ -61,6 +61,8 @@ body{
     border: 1px solid #dddddd;
     border-radius: 4px;
     font-size: 16px;
+    background-color: rgb(13, 17, 23);
+    color:white;
     
 }
 .sreach>button{
@@ -68,9 +70,9 @@ body{
     padding: 0 28px;
     border: none;
     border-radius: 4px;
-    background: #1654da;
-    color: azure;
+    background:rgb(13, 17, 23);
     font-size: 16px;
+    color: rgb(138, 162, 211);
 }
 .globalMain{
     max-width: 900px;
@@ -106,10 +108,11 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background-color: rgb(6, 9, 15);
     margin-bottom: 10px;
     position: relative;
     cursor: pointer;
+    color: rgb(138, 162, 211);
     
 
 }
@@ -136,7 +139,8 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: white;
+    background-color: rgb(6, 9, 15);
+    color: rgb(138, 162, 211);
 
 }
 
@@ -148,8 +152,12 @@ body{
 }
 .siteList .addButton .icon{
     width: 64px;
-    height: 64px;
-      
+    height: 64px; 
+    color: rgb(138, 162, 211)
+  
+}
+svg{
+    fill: rgb(138, 162, 211);
 }
 
 .siteList .addButton .text{
@@ -172,7 +180,8 @@ body{
     right:30px;
     bottom: 30px;    
 }
+
 #theme>.icon{
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
 }
